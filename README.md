@@ -84,3 +84,5 @@ sequelize.Account.findAndCountAll({ where: { [Op.or]: or } });
  * ]
  */
 ```
+
+Get more at [cases.yml](https://github.com/alitajs/object-search-key/blob/master/tests/cases.yml).

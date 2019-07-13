@@ -48,6 +48,7 @@
     type: object
     isSchema: true
     limitation:
+      - unknown: true
       - keys:
           constStr: abcdefg
           fixedLength:
@@ -69,3 +70,22 @@
         fixedLength:
           - cde
           - defg
+- schema:
+    type: object
+    isSchema: true
+    limitation:
+        - keys:
+            anyStr:
+              type: string
+              isSchema: true
+            allowOne:
+              type: string
+              isSchema: true
+              limitation:
+                - only: YOU
+  cases:
+    - input: aaa ccc
+      output:
+        anyStr:
+          - aaa
+          - ccc
