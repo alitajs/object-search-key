@@ -46,7 +46,7 @@ export function getObjectSearchKeys<T extends string = string>(
   yaml: string | JoiSchema,
   search: string[],
   loadOpts?: Yaml.LoadOptions,
-): { [key in T]?: string[] } {
+): { [key in T]?: (string | number)[] } {
   const document: JoiObjectSchema = validate(loadSchema(yaml, loadOpts), ObjectKeysSchema);
 
   const keysDefine = document.limitation!.reduce(
@@ -66,7 +66,12 @@ export function getObjectSearchKeys<T extends string = string>(
           delete limit.length;
         });
       const validator = joiSchemaParser(val);
-      ret[key] = search.filter(str => !validator.validate(str).error);
+      ret[key] = search
+        .map(str => {
+          const { error, value } = validator.validate(str);
+          return error ? undefined! : value;
+        })
+        .filter(str => str !== undefined);
       if (!ret[key]!.length) delete ret[key];
     } else {
       const valStr = `${val}`;

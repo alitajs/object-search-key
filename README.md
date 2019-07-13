@@ -52,14 +52,14 @@ limitation:
           - only: [Y, N]
 `;
 
-const searchInput = '123 hele xiaohuoni 24 1.2 N'.split(' ');
+const searchInput = '-123 hele xiaohuoni 24 1.2 N'.split(/(?:\s*)/);
 const search = getObjectSearchKeys(AccountModelDefine, searchInput);
 /**
  * Result:
  * {
- *   id: ['123', '24'],
- *   name: ['123', 'hele', 'xiaohuoni', '24', '1.2', 'N'],
- *   age: ['123', '24'],
+ *   id: [24],
+ *   name: ['-123', 'hele', 'xiaohuoni', '24', '1.2', 'N'],
+ *   age: [24],
  *   locked: ['N'],
  * }
  */

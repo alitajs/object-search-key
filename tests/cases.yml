@@ -27,21 +27,19 @@
             limitation:
               - only: [Y, N]
   cases:
-    - input: 123 hele xiaohuoni 24 1.2 N
+    - input: -123 hele xiaohuoni 24 1.2 N
       output:
         id:
-          - '123'
-          - '24'
+          - 24
         name:
-          - '123'
+          - '-123'
           - hele
           - xiaohuoni
           - '24'
           - '1.2'
           - 'N'
         age:
-          - '123'
-          - '24'
+          - 24
         locked:
           - 'N'
 - schema:
