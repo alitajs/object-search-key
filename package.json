@@ -1,0 +1,67 @@
+{
+  "name": "object-search-key",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "types": "build/index.d.ts",
+  "typings": "build/index.d.ts",
+  "description": "Match the appropriate search keywords according to the key value definition of the object",
+  "scripts": {
+    "lint": "tslint \"src/**/*.ts\" -c tslint.yml",
+    "build:node10": "tsc --build tsconfig.json",
+    "build:node8": "tsc --build tsconfig.node8.json",
+    "build": "npm run build:node10 && npm run build:node8",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
+  },
+  "homepage": "https://github.com/alitajs/object-search-key#readme",
+  "bugs": {
+    "url": "https://github.com/alitajs/object-search-key/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alitajs/object-search-key.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "files": [
+    "build",
+    "build8",
+    "index.js"
+  ],
+  "keywords": [
+    "key",
+    "joi",
+    "node",
+    "search",
+    "object"
+  ],
+  "dependencies": {
+    "yaml-joi": "^1.0.2",
+    "js-yaml": "^3.13.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.15",
+    "@types/joi": "^14.3.3",
+    "@types/js-yaml": "^3.12.1",
+    "@types/node": "^8.10.0",
+    "coveralls": "^3.0.4",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1",
+    "umi-test": "^1.6.1"
+  }
+}

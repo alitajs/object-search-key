@@ -1,0 +1,46 @@
+- schema:
+    type: object
+    isSchema: true
+    limitation:
+      - keys:
+          id:
+            type: number
+            isSchema: true
+            limitation:
+              - min: 0
+              - max: 999999999
+              - integer: []
+          name:
+            type: string
+            isSchema: true
+            limitation:
+              - max: 32
+          age:
+            type: number
+            isSchema: true
+            limitation:
+              - min: 0
+              - integer: []
+          locked:
+            type: string
+            isSchema: true
+            limitation:
+              - only: [Y, N]
+  cases:
+    - input: 123 hele xiaohuoni 24 1.2 N
+      output:
+        id:
+          - '123'
+          - '24'
+        name:
+          - '123'
+          - hele
+          - xiaohuoni
+          - '24'
+          - '1.2'
+          - 'N'
+        age:
+          - '123'
+          - '24'
+        locked:
+          - 'N'
