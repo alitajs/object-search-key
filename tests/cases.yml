@@ -44,3 +44,28 @@
           - '24'
         locked:
           - 'N'
+- schema:
+    type: object
+    isSchema: true
+    limitation:
+      - keys:
+          constStr: abcdefg
+          fixedLength:
+            type: string
+            isSchema: true
+            limitation:
+              - length: 32
+  cases:
+    - input: abcdefghijk ccc
+      output:
+        fixedLength:
+          - abcdefghijk
+          - ccc
+    - input: cde defg
+      output:
+        constStr:
+          - cde
+          - defg
+        fixedLength:
+          - cde
+          - defg

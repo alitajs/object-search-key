@@ -8,7 +8,7 @@ function validate<T>(instance: T, validator: Joi.Schema): T {
   return value;
 }
 
-const GetObjectSearchKeysDocumentSchema = yamlJoi(`
+const ObjectKeysSchema = yamlJoi(`
 type: object
 isSchema: true
 limitation:
@@ -38,15 +38,16 @@ function isSchema(val: any): val is JoiSchema {
   return !!val && typeof val === 'object' && 'isSchema' in val && !!val.isSchema;
 }
 
+function loadSchema(yaml: string | JoiSchema, loadOpts?: Yaml.LoadOptions) {
+  return typeof yaml === 'string' ? Yaml.load(yaml, loadOpts) : yaml;
+}
+
 export function getObjectSearchKeys<T extends string = string>(
-  yaml: string,
+  yaml: string | JoiSchema,
   search: string[],
   loadOpts?: Yaml.LoadOptions,
 ): { [key in T]?: string[] } {
-  const document: JoiObjectSchema = validate(
-    Yaml.load(yaml, loadOpts),
-    GetObjectSearchKeysDocumentSchema,
-  );
+  const document: JoiObjectSchema = validate(loadSchema(yaml, loadOpts), ObjectKeysSchema);
 
   const keysDefine = document.limitation!.reduce(
     (prev, curr) => ('keys' in curr ? Object.assign(prev, curr.keys) : prev),
