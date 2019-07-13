@@ -1,5 +1,6 @@
 # object-search-key
 
+[![Alita](https://img.shields.io/badge/alitajs-object%20search%20key-blue.svg)](https://github.com/alitajs/object-search-key)
 [![NPM version](https://img.shields.io/npm/v/object-search-key.svg?style=flat)](https://npmjs.org/package/object-search-key)
 [![NPM downloads](http://img.shields.io/npm/dm/object-search-key.svg?style=flat)](https://npmjs.org/package/object-search-key)
 [![Build Status](https://travis-ci.com/alitajs/object-search-key.svg?branch=master)](https://travis-ci.com/alitajs/object-search-key)
